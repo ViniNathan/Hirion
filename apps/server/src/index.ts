@@ -1,14 +1,19 @@
 import "dotenv/config";
-import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
+import { createContext } from "@my-better-t-app/api/context";
+import { appRouter } from "@my-better-t-app/api/routers/index";
+import { auth } from "@my-better-t-app/auth";
 import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
-import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
-import { RPCHandler } from "@orpc/server/fetch";
 import { onError } from "@orpc/server";
-import { appRouter } from "@my-better-t-app/api/routers/index";
-import { createContext } from "@my-better-t-app/api/context";
-import { auth } from "@my-better-t-app/auth";
+import { RPCHandler } from "@orpc/server/fetch";
+import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
+import { Elysia } from "elysia";
+
+const port = Number(process.env.PORT ?? 3000);
+if (!Number.isFinite(port) || port <= 0) {
+	throw new Error(`Invalid PORT: ${process.env.PORT}`);
+}
 
 const rpcHandler = new RPCHandler(appRouter, {
 	interceptors: [
@@ -30,7 +35,7 @@ const apiHandler = new OpenAPIHandler(appRouter, {
 	],
 });
 
-const app = new Elysia()
+new Elysia()
 	.use(
 		cors({
 			origin: process.env.CORS_ORIGIN || "",
@@ -61,6 +66,6 @@ const app = new Elysia()
 		return response ?? new Response("Not Found", { status: 404 });
 	})
 	.get("/", () => "OK")
-	.listen(3000, () => {
-		console.log("Server is running on http://localhost:3000");
+	.listen(port, () => {
+		console.log(`Server is running on http://localhost:${port}`);
 	});
