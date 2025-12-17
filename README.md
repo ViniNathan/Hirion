@@ -1,100 +1,77 @@
-# Hirion
+# my-better-t-app
 
-AI-powered backend platform for developer hiring simulation and interview preparation.
+This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Elysia, ORPC, and more.
 
-## Tech Stack
+## Features
 
-- **Runtime**: Bun
-- **Language**: TypeScript
-- **Framework**: Fastify
-- **Database**: PostgreSQL (Supabase) + Prisma
-- **Queue**: BullMQ
-- **Build System**: Turborepo
-- **Linting**: Biome
-
-## Project Structure
-
-This is a monorepo managed by Turborepo:
-
-```
-hirion/
-├── apps/
-│   └── api/          # Fastify API application
-├── packages/
-│   ├── db/           # Prisma client and database schema
-│   ├── shared/       # Shared schemas and utilities
-│   ├── ai/           # AI orchestration (LangChain)
-│   └── observability/ # Logging and tracing
-└── package.json      # Root workspace configuration
-```
+- **TypeScript** - For type safety and improved developer experience
+- **Next.js** - Full-stack React framework
+- **TailwindCSS** - Utility-first CSS for rapid UI development
+- **shadcn/ui** - Reusable UI components
+- **Elysia** - Type-safe, high-performance framework
+- **oRPC** - End-to-end type-safe APIs with OpenAPI integration
+- **Bun** - Runtime environment
+- **Prisma** - TypeScript-first ORM
+- **PostgreSQL** - Database engine
+- **Authentication** - Better-Auth
+- **Biome** - Linting and formatting
+- **Turborepo** - Optimized monorepo build system
 
 ## Getting Started
 
-### Prerequisites
-
-- [Bun](https://bun.sh) >= 1.0.0
-- Node.js >= 18.0.0
-- PostgreSQL database (Supabase recommended)
-
-### Installation
+First, install the dependencies:
 
 ```bash
 bun install
 ```
+## Database Setup
 
-### Environment Variables
+This project uses PostgreSQL with Prisma.
 
-Create a `.env` file in the root directory:
+1. Make sure you have a PostgreSQL database set up.
+2. Update your `apps/server/.env` file with your PostgreSQL connection details.
 
-```env
-PORT=3000
-NODE_ENV=development
-DATABASE_URL=postgresql://...
-REDIS_URL=redis://...
-SUPABASE_PROJECT_REF=...
-SUPABASE_JWKS_URL=https://...
-LANGSMITH_API_KEY=...
-LANGSMITH_PROJECT=hirion
-LANGSMITH_TRACING=true
-OPENAI_API_KEY=...
+3. Generate the Prisma client and push the schema:
+```bash
+bun run db:push
 ```
 
-### Development
+
+Then, run the development server:
 
 ```bash
-# Run all apps in development mode
 bun run dev
-
-# Run specific app
-bun --cwd apps/api dev
-
-# Build all packages
-bun run build
-
-# Lint
-bun run lint
-
-# Type check
-bun run typecheck
 ```
 
-### Database
+Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
+The API is running at [http://localhost:3000](http://localhost:3000).
 
-```bash
-# Generate Prisma client
-bun --cwd packages/db prisma:generate
 
-# Run migrations
-bun --cwd packages/db prisma:migrate
 
-# Open Prisma Studio
-bun --cwd packages/db prisma:studio
+
+
+
+
+## Project Structure
+
+```
+my-better-t-app/
+├── apps/
+│   ├── web/         # Frontend application (Next.js)
+│   └── server/      # Backend API (Elysia, ORPC)
+├── packages/
+│   ├── api/         # API layer / business logic
+│   ├── auth/        # Authentication configuration & logic
+│   └── db/          # Database schema & queries
 ```
 
-## Scripts
+## Available Scripts
 
-- `bun run dev` - Start all apps in development mode
-- `bun run build` - Build all packages
-- `bun run lint` - Lint all packages
-- `bun run typecheck` - Type check all packages
-- `bun run clean` - Clean all build outputs
+- `bun run dev`: Start all applications in development mode
+- `bun run build`: Build all applications
+- `bun run dev:web`: Start only the web application
+- `bun run dev:server`: Start only the server
+- `bun run check-types`: Check TypeScript types across all apps
+- `bun run db:push`: Push schema changes to database
+- `bun run db:studio`: Open database studio UI
+- `bun run check`: Run Biome formatting and linting
