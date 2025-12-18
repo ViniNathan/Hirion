@@ -10,7 +10,7 @@ const model = new ChatGoogleGenerativeAI({
 const agent = createAgent({
 	model,
 	tools: [],
-	middleware: [curriculumGuardrail("document")],
+	middleware: [curriculumGuardrail({ documentKey: "document" })],
 });
 
 export { agent };
