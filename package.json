@@ -35,7 +35,10 @@
     "db:migrate": "turbo -F @my-better-t-app/db db:migrate"
   },
   "dependencies": {
+    "@langchain/core": "^1.1.6",
+    "@langchain/google-genai": "^2.1.1",
     "dotenv": "catalog:",
+    "langchain": "^1.2.1",
     "zod": "catalog:"
   },
   "devDependencies": {
