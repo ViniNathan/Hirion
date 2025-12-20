@@ -36,30 +36,16 @@ export default function Hero() {
 							ease: [0.16, 1, 0.3, 1]
 						}}
 					>
-						<motion.span
+						<span
 							className="text-6xl md:text-[110px] lg:text-[140px]"
-							initial={{ opacity: 0, x: -20 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ 
-								duration: 0.6, 
-								delay: 0.7,
-								ease: [0.16, 1, 0.3, 1]
-							}}
 						>
 							H
-						</motion.span>
-						<motion.span
+						</span>
+						<span
 							className="text-5xl md:text-8xl lg:text-9xl"
-							initial={{ opacity: 0, x: 20 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ 
-								duration: 0.6, 
-								delay: 0.8,
-								ease: [0.16, 1, 0.3, 1]
-							}}
 						>
 							irion
-						</motion.span>
+						</span>
 					</motion.div>
 					
 					<motion.div
