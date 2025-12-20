@@ -74,7 +74,6 @@ export default function Hero() {
 					/>
 				</div>
 
-				{/* Subtitle */}
 				<motion.p
 					className="max-w-2xl text-center text-sm font-light text-muted-foreground md:text-base lg:text-lg"
 					initial={{ opacity: 0, y: 10 }}
@@ -88,7 +87,6 @@ export default function Hero() {
 					Experience hiring before it happens.
 				</motion.p>
 
-				{/* Decorative dots */}
 				<motion.div
 					className="mt-8 flex gap-2"
 					initial={{ opacity: 0 }}
@@ -111,7 +109,6 @@ export default function Hero() {
 				</motion.div>
 			</div>
 
-			{/* Animated background circles */}
 			<motion.div
 				className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-foreground/5 blur-3xl"
 				animate={{
