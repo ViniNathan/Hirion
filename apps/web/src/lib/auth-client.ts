@@ -1,4 +1,4 @@
-import type { auth } from "@my-better-t-app/auth";
+import type { auth } from "@Hirion/auth";
 import { createAuthClient } from "better-auth/react";
 
 export const authClient = createAuthClient({

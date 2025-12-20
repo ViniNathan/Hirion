@@ -1,6 +1,6 @@
+import prisma from "@Hirion/db";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import prisma from "@my-better-t-app/db";
 
 export const auth = betterAuth({
 	database: prismaAdapter(prisma, {
