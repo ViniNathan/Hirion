@@ -1,5 +1,5 @@
 {
-  "name": "my-better-t-app",
+  "name": "Hirion",
   "private": true,
   "type": "module",
   "workspaces": {
@@ -29,10 +29,10 @@
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
-    "db:push": "turbo -F @my-better-t-app/db db:push",
-    "db:studio": "turbo -F @my-better-t-app/db db:studio",
-    "db:generate": "turbo -F @my-better-t-app/db db:generate",
-    "db:migrate": "turbo -F @my-better-t-app/db db:migrate"
+    "db:push": "turbo -F @Hirion/db db:push",
+    "db:studio": "turbo -F @Hirion/db db:studio",
+    "db:generate": "turbo -F @Hirion/db db:generate",
+    "db:migrate": "turbo -F @Hirion/db db:migrate"
   },
   "dependencies": {
     "@langchain/core": "^1.1.6",

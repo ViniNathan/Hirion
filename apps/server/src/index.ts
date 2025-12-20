@@ -1,8 +1,8 @@
 import "dotenv/config";
+import { createContext } from "@Hirion/api/context";
+import { appRouter } from "@Hirion/api/routers/index";
+import { auth } from "@Hirion/auth";
 import { cors } from "@elysiajs/cors";
-import { createContext } from "@my-better-t-app/api/context";
-import { appRouter } from "@my-better-t-app/api/routers/index";
-import { auth } from "@my-better-t-app/auth";
 import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
 import { onError } from "@orpc/server";

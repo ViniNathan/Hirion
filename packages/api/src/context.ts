@@ -1,5 +1,5 @@
+import { auth } from "@Hirion/auth";
 import type { Context as ElysiaContext } from "elysia";
-import { auth } from "@my-better-t-app/auth";
 
 export type CreateContextOptions = {
 	context: ElysiaContext;
