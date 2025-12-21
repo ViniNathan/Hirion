@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Bebas_Neue, Montserrat } from "next/font/google";
+import { HoverButton } from "@/components/ui/hover-button";
 
 const bebasNeue = Bebas_Neue({
 	weight: "400",
@@ -69,6 +70,18 @@ export default function Hero() {
 				>
 					Experience hiring before it happens.
 				</motion.p>
+
+				<motion.div
+					initial={{ opacity: 0, y: 10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						duration: 0.6,
+						delay: 1.4,
+						ease: [0.16, 1, 0.3, 1],
+					}}
+				>
+					<HoverButton>Get Hired</HoverButton>
+				</motion.div>
 
 				<motion.div
 					className="mt-8 flex gap-2"
