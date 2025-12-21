@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Bebas_Neue } from "next/font/google";
+import { Bebas_Neue, Montserrat } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({
+	weight: "400",
+	subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
 	weight: "400",
 	subsets: ["latin"],
 });
@@ -53,7 +58,7 @@ export default function Hero() {
 				</div>
 
 				<motion.p
-					className="max-w-2xl text-center font-light text-muted-foreground text-sm md:text-base lg:text-lg"
+					className={`${montserrat.className} max-w-2xl text-center font-light text-muted-foreground text-sm md:text-base lg:text-lg`}
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{
