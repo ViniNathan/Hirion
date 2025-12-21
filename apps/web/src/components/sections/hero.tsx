@@ -82,27 +82,6 @@ export default function Hero() {
 				>
 					<HoverButton>Get Hired</HoverButton>
 				</motion.div>
-
-				<motion.div
-					className="mt-8 flex gap-2"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 0.5, delay: 1.5 }}
-				>
-					{[0, 1, 2].map((i) => (
-						<motion.div
-							key={i}
-							className="h-2 w-2 rounded-full bg-foreground/30"
-							initial={{ scale: 0 }}
-							animate={{ scale: 1 }}
-							transition={{
-								duration: 0.3,
-								delay: 1.6 + i * 0.1,
-								ease: [0.16, 1, 0.3, 1],
-							}}
-						/>
-					))}
-				</motion.div>
 			</div>
 
 			<motion.div
