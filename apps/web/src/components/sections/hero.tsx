@@ -16,15 +16,15 @@ const montserrat = Montserrat({
 
 export default function Hero() {
 	return (
-		<div className="relative flex h-dvh flex-col items-center justify-center overflow-hidden">
+		<div className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
 			<div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-background/20" />
 
-			<div className="relative z-10 flex flex-col items-center gap-6 px-4">
-				<div className="flex flex-row items-center gap-4 md:gap-6">
+			<div className="relative z-10 flex w-full max-w-7xl flex-col items-center gap-4 sm:gap-6">
+				<div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6">
 					<motion.div
-						className="h-0.5 bg-linear-to-l from-white to-transparent"
+						className="hidden h-0.5 bg-linear-to-l from-white to-transparent sm:block"
 						initial={{ width: 0, opacity: 0 }}
-						animate={{ width: "min(400px, 30vw)", opacity: 1 }}
+						animate={{ width: "min(400px, 20vw)", opacity: 1 }}
 						transition={{
 							duration: 1.5,
 							delay: 0.3,
@@ -42,14 +42,18 @@ export default function Hero() {
 							ease: [0.16, 1, 0.3, 1],
 						}}
 					>
-						<span className="text-6xl md:text-[110px] lg:text-[140px]">H</span>
-						<span className="text-5xl md:text-8xl lg:text-9xl">irion</span>
+						<span className="text-9xl md:text-8xl lg:text-[110px] xl:text-[200px]">
+							H
+						</span>
+						<span className="text-8xl md:text-7xl lg:text-8xl xl:text-[180px]">
+							irion
+						</span>
 					</motion.div>
 
 					<motion.div
-						className="h-0.5 bg-linear-to-r from-white to-transparent"
+						className="hidden h-0.5 bg-linear-to-r from-white to-transparent sm:block"
 						initial={{ width: 0, opacity: 0 }}
-						animate={{ width: "min(400px, 30vw)", opacity: 1 }}
+						animate={{ width: "min(400px, 20vw)", opacity: 1 }}
 						transition={{
 							duration: 1.5,
 							delay: 0.3,
@@ -59,7 +63,7 @@ export default function Hero() {
 				</div>
 
 				<motion.p
-					className={`${montserrat.className} max-w-2xl text-center font-light text-muted-foreground text-sm md:text-base lg:text-lg`}
+					className={`${montserrat.className} max-w-2xl px-2 text-center font-light text-md text-muted-foreground sm:px-0 md:text-base lg:text-lg xl:text-2xl`}
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{
@@ -72,6 +76,7 @@ export default function Hero() {
 				</motion.p>
 
 				<motion.div
+					className="mt-2 sm:mt-0"
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{
@@ -85,7 +90,7 @@ export default function Hero() {
 			</div>
 
 			<motion.div
-				className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-foreground/5 blur-3xl"
+				className="absolute top-1/4 left-1/4 h-32 w-32 rounded-full bg-foreground/5 blur-3xl sm:h-48 sm:w-48 md:h-64 md:w-64"
 				animate={{
 					scale: [1, 1.2, 1],
 					opacity: [0.3, 0.5, 0.3],
@@ -97,7 +102,7 @@ export default function Hero() {
 				}}
 			/>
 			<motion.div
-				className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-foreground/5 blur-3xl"
+				className="absolute right-1/4 bottom-1/4 h-48 w-48 rounded-full bg-foreground/5 blur-3xl sm:h-72 sm:w-72 md:h-96 md:w-96"
 				animate={{
 					scale: [1, 1.3, 1],
 					opacity: [0.3, 0.5, 0.3],
