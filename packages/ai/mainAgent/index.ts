@@ -2,6 +2,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { createAgent } from "langchain";
 import { curriculumGuardrail } from "../guardrails";
 import { prompts } from "../prompts";
+import "dotenv-flow/config";
 
 const model = new ChatGoogleGenerativeAI({
 	model: "gemini-2.5-flash",
