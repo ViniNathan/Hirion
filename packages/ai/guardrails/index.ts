@@ -160,7 +160,25 @@ const curriculumGuardrail = (options: CurriculumGuardrailOptions = {}) => {
 		name: "CurriculumGuardrail",
 		beforeAgent: {
 			hook: async (state: Record<string, unknown>) => {
-				const document = state[documentKey];
+				// Tenta obter o documento do state primeiro
+				let document = state[documentKey];
+				
+				// Se não encontrar no state, tenta extrair da primeira mensagem do usuário
+				if (typeof document !== "string") {
+					const messages = state.messages;
+					if (Array.isArray(messages) && messages.length > 0) {
+						const firstMessage = messages[0];
+						if (
+							firstMessage &&
+							typeof firstMessage === "object" &&
+							"content" in firstMessage &&
+							typeof firstMessage.content === "string"
+						) {
+							document = firstMessage.content;
+						}
+					}
+				}
+				
 				if (typeof document !== "string") {
 					throw new Error(
 						"Documento inválido: envie apenas currículo (texto).",
