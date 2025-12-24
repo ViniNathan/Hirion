@@ -32,12 +32,15 @@
     "db:push": "turbo -F @Hirion/db db:push",
     "db:studio": "turbo -F @Hirion/db db:studio",
     "db:generate": "turbo -F @Hirion/db db:generate",
-    "db:migrate": "turbo -F @Hirion/db db:migrate"
+    "db:migrate": "turbo -F @Hirion/db db:migrate",
+    "test": "turbo -F @Hirion/ai test"
   },
   "dependencies": {
     "@langchain/core": "^1.1.6",
     "@langchain/google-genai": "^2.1.1",
+    "@types/jest": "^30.0.0",
     "dotenv": "catalog:",
+    "dotenv-flow": "^4.1.0",
     "langchain": "^1.2.1",
     "zod": "catalog:"
   },
