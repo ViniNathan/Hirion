@@ -135,5 +135,5 @@ describe("Teste de processamento de documento pela IA", () => {
 		console.log(JSON.stringify(resultado, null, 2));
 
 		expect(resultado).toBeDefined();
-	}, 30000); // timeout de 30 segundos para chamadas de IA
+	}, 50000); // timeout de 50 segundos para chamadas de IA
 });
