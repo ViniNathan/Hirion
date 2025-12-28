@@ -37,9 +37,7 @@ const callCurriculumScorerSubagent = tool(
 					: typeof err === "string"
 						? err
 						: "Erro desconhecido ao processar o currículo";
-			throw new Error(
-				`Erro ao avaliar o currículo: ${errorMessage}`,
-			);
+			throw new Error(`Erro ao avaliar o currículo: ${errorMessage}`);
 		}
 	},
 	{
