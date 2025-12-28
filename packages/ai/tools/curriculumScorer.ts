@@ -1,9 +1,14 @@
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { createAgent, HumanMessage, tool } from "langchain";
 import { z } from "zod";
 import { prompts } from "../prompts";
+import "dotenv-flow/config";
 
 const curriculumScorerSubagent = createAgent({
-	model: "gemini-2.5-flash",
+	model: new ChatGoogleGenerativeAI({
+		model: "gemini-2.5-flash",
+		apiKey: process.env.GOOGLE_API_KEY,
+	}),
 	tools: [],
 });
 
@@ -15,15 +20,27 @@ const callCurriculumScorerSubagent = tool(
 		curriculum: string;
 		jobDescription: string;
 	}) => {
-		const response = await curriculumScorerSubagent.invoke({
-			messages: [
-				prompts.curriculumScorer,
-				new HumanMessage(
-					`Currículo do candidato:\n\n${curriculum}\n\n---\n\nDescrição da vaga:\n\n${jobDescription}`,
-				),
-			],
-		});
-		return response;
+		try {
+			const response = await curriculumScorerSubagent.invoke({
+				messages: [
+					prompts.curriculumScorer,
+					new HumanMessage(
+						`Currículo do candidato:\n\n${curriculum}\n\n---\n\nDescrição da vaga:\n\n${jobDescription}`,
+					),
+				],
+			});
+			return response;
+		} catch (err) {
+			const errorMessage =
+				err instanceof Error
+					? err.message
+					: typeof err === "string"
+						? err
+						: "Erro desconhecido ao processar o currículo";
+			throw new Error(
+				`Erro ao avaliar o currículo: ${errorMessage}`,
+			);
+		}
 	},
 	{
 		name: "CurriculumScorerSubagent",
