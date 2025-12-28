@@ -1,5 +1,6 @@
-import { createAgent, tool } from "langchain";
+import { createAgent, HumanMessage, tool } from "langchain";
 import { z } from "zod";
+import { prompts } from "../prompts";
 
 const curriculumScorerSubagent = createAgent({
 	model: "gemini-2.5-flash",
@@ -16,10 +17,10 @@ const callCurriculumScorerSubagent = tool(
 	}) => {
 		const response = await curriculumScorerSubagent.invoke({
 			messages: [
-				{
-					role: "user",
-					content: `Currículo do candidato:\n\n${curriculum}\n\n---\n\nDescrição da vaga:\n\n${jobDescription}`,
-				},
+				prompts.curriculumScorer,
+				new HumanMessage(
+					`Currículo do candidato:\n\n${curriculum}\n\n---\n\nDescrição da vaga:\n\n${jobDescription}`,
+				),
 			],
 		});
 		return response;
