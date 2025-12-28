@@ -1,6 +1,7 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { createAgent, modelCallLimitMiddleware } from "langchain";
 import { curriculumGuardrail } from "../guardrails";
+import { callCoverLetterCreatorSubagent } from "../tools/coverLetterCreator";
 import { callCurriculumScorerSubagent } from "../tools/curriculumScorer";
 import "dotenv-flow/config";
 
@@ -11,7 +12,7 @@ const model = new ChatGoogleGenerativeAI({
 
 const mainAgent = createAgent({
 	model,
-	tools: [callCurriculumScorerSubagent],
+	tools: [callCurriculumScorerSubagent, callCoverLetterCreatorSubagent],
 	middleware: [
 		curriculumGuardrail({ documentKey: "document" }),
 		modelCallLimitMiddleware({
