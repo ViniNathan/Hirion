@@ -1,0 +1,27 @@
+{
+  "name": "@Hirion/ai",
+  "exports": {
+    ".": {
+      "default": "./index.ts"
+    },
+    "./*": {
+      "default": "./*.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "@Hirion/config": "workspace:*"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.1.6",
+    "@langchain/google-genai": "^2.1.1",
+    "langchain": "^1.2.1",
+    "zod": "catalog:",
+    "dotenv-flow": "^4.1.0"
+  }
+}
+
