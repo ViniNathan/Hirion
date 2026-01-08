@@ -10,6 +10,7 @@
     "start": "bun run dist/index.js"
   },
   "dependencies": {
+    "@Hirion/ai": "workspace:*",
     "@Hirion/api": "workspace:*",
     "@Hirion/auth": "workspace:*",
     "@Hirion/db": "workspace:*",
