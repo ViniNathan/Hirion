@@ -23,6 +23,7 @@
     "dotenv": "catalog:",
     "zod": "catalog:",
     "@Hirion/auth": "workspace:*",
-    "@Hirion/db": "workspace:*"
+    "@Hirion/db": "workspace:*",
+    "@Hirion/ai": "workspace:*"
   }
 }
