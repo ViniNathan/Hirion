@@ -10,17 +10,19 @@
     "start": "bun run dist/index.js"
   },
   "dependencies": {
-    "elysia": "catalog:",
+    "@Hirion/ai": "workspace:*",
+    "@Hirion/api": "workspace:*",
+    "@Hirion/auth": "workspace:*",
+    "@Hirion/db": "workspace:*",
     "@elysiajs/cors": "^1.3.3",
-    "@orpc/server": "catalog:",
+    "@elysiajs/static": "^1.4.7",
     "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
     "@orpc/zod": "catalog:",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@Hirion/api": "workspace:*",
-    "@Hirion/auth": "workspace:*",
-    "@Hirion/db": "workspace:*"
+    "elysia": "catalog:",
+    "zod": "catalog:"
   },
   "trustedDependencies": [
     "supabase"
