@@ -23,6 +23,7 @@
     "apps/server": {
       "name": "server",
       "dependencies": {
+        "@Hirion/ai": "workspace:*",
         "@Hirion/api": "workspace:*",
         "@Hirion/auth": "workspace:*",
         "@Hirion/db": "workspace:*",
