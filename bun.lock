@@ -82,9 +82,24 @@
         "typescript": "catalog:",
       },
     },
+    "packages/ai": {
+      "name": "@Hirion/ai",
+      "dependencies": {
+        "@langchain/core": "^1.1.6",
+        "@langchain/google-genai": "^2.1.1",
+        "dotenv-flow": "^4.1.0",
+        "langchain": "^1.2.1",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@Hirion/config": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "packages/api": {
       "name": "@Hirion/api",
       "dependencies": {
+        "@Hirion/ai": "workspace:*",
         "@Hirion/auth": "workspace:*",
         "@Hirion/db": "workspace:*",
         "@orpc/client": "catalog:",
@@ -148,6 +163,8 @@
     "zod": "^4.1.13",
   },
   "packages": {
+    "@Hirion/ai": ["@Hirion/ai@workspace:packages/ai"],
+
     "@Hirion/api": ["@Hirion/api@workspace:packages/api"],
 
     "@Hirion/auth": ["@Hirion/auth@workspace:packages/auth"],
