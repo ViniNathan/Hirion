@@ -15,6 +15,7 @@
         "@Hirion/config": "workspace:*"
     },
     "dependencies": {
-        "bullmq": "^5.66.4"
+        "bullmq": "^5.66.4",
+        "ioredis": "^5.9.1"
     }
 }
