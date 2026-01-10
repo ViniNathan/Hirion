@@ -1,0 +1,20 @@
+{
+    "name": "@Hirion/queue",
+    "type": "module",
+    "exports": {
+        ".": {
+            "default": "./src/index.ts"
+        },
+        "./*": {
+            "default": "./src/*.ts"
+        }
+    },
+    "scripts": {},
+    "devDependencies": {
+        "typescript": "catalog:",
+        "@Hirion/config": "workspace:*"
+    },
+    "dependencies": {
+        "bullmq": "^5.66.4"
+    }
+}
