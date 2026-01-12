@@ -1,46 +1,44 @@
-export { createRedisConnection, getRedisConnection } from "./redis/connection";
-
-export {
-	getAIQueue,
-	closeAllQueues,
-	QueueName,
-	QUEUE_PREFIX,
-} from "./bullmq/queues";
 export type { QueueName as QueueNameType } from "./bullmq/queues";
 
 export {
-	JobType,
-	CurriculumProcessJobSchema,
+	closeAllQueues,
+	getAIQueue,
+	QUEUE_PREFIX,
+	QueueName,
+} from "./bullmq/queues";
+export type {
+	JobActiveEvent,
+	JobCancelledEvent,
+	JobCompletedEvent,
+	JobEvent,
+	JobEventType as JobEventTypeEnum,
+	JobFailedEvent,
+	JobProgress,
+	JobProgressEvent,
+} from "./contracts/events";
+export {
+	createJobEvent,
+	JobActiveEventSchema,
+	JobCancelledEventSchema,
+	JobCompletedEventSchema,
+	JobEventSchema,
+	JobEventType,
+	JobFailedEventSchema,
+	JobProgressEventSchema,
+	JobProgressSchema,
+} from "./contracts/events";
+export type {
+	CoverLetterCreateJob,
+	CurriculumProcessJob,
+	JobPayload,
+	JobType as JobTypeEnum,
+	TraceContext,
+} from "./contracts/jobs";
+export {
 	CoverLetterCreateJobSchema,
+	CurriculumProcessJobSchema,
+	JobType,
 	TraceContextSchema,
 	validateJobPayload,
 } from "./contracts/jobs";
-export type {
-	JobType as JobTypeEnum,
-	CurriculumProcessJob,
-	CoverLetterCreateJob,
-	TraceContext,
-	JobPayload,
-} from "./contracts/jobs";
-
-export {
-	JobEventType,
-	JobProgressSchema,
-	JobProgressEventSchema,
-	JobActiveEventSchema,
-	JobCompletedEventSchema,
-	JobFailedEventSchema,
-	JobCancelledEventSchema,
-	JobEventSchema,
-	createJobEvent,
-} from "./contracts/events";
-export type {
-	JobEventType as JobEventTypeEnum,
-	JobProgress,
-	JobProgressEvent,
-	JobActiveEvent,
-	JobCompletedEvent,
-	JobFailedEvent,
-	JobCancelledEvent,
-	JobEvent,
-} from "./contracts/events";
+export { createRedisConnection, getRedisConnection } from "./redis/connection";

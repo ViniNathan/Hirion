@@ -1,13 +1,13 @@
 import "dotenv/config";
+import { agentCall } from "@Hirion/ai";
 import { createContext } from "@Hirion/api/context";
 import { appRouter } from "@Hirion/api/routers/index";
-import { auth } from "@Hirion/auth";
 import {
 	extractTextFromFile,
 	validateFileSize,
 	validateFileType,
 } from "@Hirion/api/utils/documentExtractor";
-import { agentCall } from "@Hirion/ai";
+import { auth } from "@Hirion/auth";
 import { cors } from "@elysiajs/cors";
 import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
@@ -64,13 +64,10 @@ new Elysia()
 		});
 
 		if (!session?.user) {
-			return new Response(
-				JSON.stringify({ error: "Não autorizado" }),
-				{
-					status: 401,
-					headers: { "Content-Type": "application/json" },
-				},
-			);
+			return new Response(JSON.stringify({ error: "Não autorizado" }), {
+				status: 401,
+				headers: { "Content-Type": "application/json" },
+			});
 		}
 
 		try {

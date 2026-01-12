@@ -13,7 +13,7 @@ export function createRedisConnection(): Redis {
 
 	// Fallback para variáveis individuais
 	const host = process.env.REDIS_HOST || "localhost";
-	const port = parseInt(process.env.REDIS_PORT || "6379", 10);
+	const port = Number.parseInt(process.env.REDIS_PORT || "6379", 10);
 	const password = process.env.REDIS_PASSWORD;
 	const tls = process.env.REDIS_TLS === "true" ? {} : undefined;
 

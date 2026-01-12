@@ -29,8 +29,8 @@ const prompts = {
         ]
     }`,
 	}),
-    coverLetterCreator: new SystemMessage({
-        content: `
+	coverLetterCreator: new SystemMessage({
+		content: `
         Você é um criador de cartas de apresentação de candidatos para uma determinada vaga.
         Você recebe um currículo e a descrição da vaga e deve gerar uma carta de apresentação para o candidato com base nessas informações.
         A carta de apresentação deve ser baseada em:
@@ -43,7 +43,7 @@ const prompts = {
             "coverLetter": "Olá, sou [Nome do candidato], um [Profissão] com [experiência] anos de experiência em [Habilidades]. Sou um profissional [Profissão] com [experiência] anos de experiência em [Habilidades]. Sou um profissional [Profissão] com [experiência] anos de experiência em [Habilidades]."
         }
     `,
-    }),
+	}),
 };
 
 export { prompts };

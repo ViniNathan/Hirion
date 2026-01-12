@@ -1,8 +1,8 @@
-import { protectedProcedure, publicProcedure } from "../index";
-import type { RouterClient } from "@orpc/server";
-import { z } from "zod";
 import { agentCall } from "@Hirion/ai";
+import type { RouterClient } from "@orpc/server";
 import { ORPCError } from "@orpc/server";
+import { z } from "zod";
+import { protectedProcedure, publicProcedure } from "../index";
 
 export const appRouter = {
 	healthCheck: publicProcedure.handler(() => {
@@ -18,7 +18,9 @@ export const appRouter = {
 		.input(
 			z.object({
 				document: z.string().min(1, "O documento não pode estar vazio"),
-				jobDescription: z.string().min(1, "A descrição da vaga não pode estar vazia"),
+				jobDescription: z
+					.string()
+					.min(1, "A descrição da vaga não pode estar vazia"),
 			}),
 		)
 		.handler(async ({ input }) => {

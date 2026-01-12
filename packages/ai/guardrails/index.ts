@@ -162,7 +162,7 @@ const curriculumGuardrail = (options: CurriculumGuardrailOptions = {}) => {
 			hook: async (state: Record<string, unknown>) => {
 				// Tenta obter o documento do state primeiro
 				let document = state[documentKey];
-				
+
 				// Se não encontrar no state, tenta extrair da primeira mensagem do usuário
 				if (typeof document !== "string") {
 					const messages = state.messages;
@@ -178,7 +178,7 @@ const curriculumGuardrail = (options: CurriculumGuardrailOptions = {}) => {
 						}
 					}
 				}
-				
+
 				if (typeof document !== "string") {
 					throw new Error(
 						"Documento inválido: envie apenas currículo (texto).",

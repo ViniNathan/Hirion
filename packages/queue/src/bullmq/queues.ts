@@ -1,5 +1,5 @@
-import { Queue } from "bullmq";
 import type { QueueOptions } from "bullmq";
+import { Queue } from "bullmq";
 import { getRedisConnection } from "../redis/connection";
 
 export const QUEUE_PREFIX = process.env.QUEUE_PREFIX || "hirion";
@@ -30,7 +30,6 @@ let aiQueue: Queue | null = null;
 
 export function getAIQueue(): Queue {
 	if (!aiQueue) {
-
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		aiQueue = new Queue(QueueName.AI, {
 			connection: getRedisConnection() as any,

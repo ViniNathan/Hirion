@@ -1,8 +1,10 @@
-import * as pdfParse from "pdf-parse";
-import mammoth from "mammoth";
 import { ORPCError } from "@orpc/server";
+import mammoth from "mammoth";
+import * as pdfParse from "pdf-parse";
 
-export type SupportedFileType = "application/pdf" | "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+export type SupportedFileType =
+	| "application/pdf"
+	| "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
 export interface ExtractedText {
 	text: string;
@@ -19,16 +21,16 @@ export async function extractTextFromFile(
 	try {
 		if (mimeType === "application/pdf") {
 			return await extractFromPDF(fileBuffer);
-		} else if (
+		}
+		if (
 			mimeType ===
 			"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 		) {
 			return await extractFromDOCX(fileBuffer);
-		} else {
-			throw new ORPCError("BAD_REQUEST", {
-				message: `Tipo de arquivo não suportado: ${mimeType}. Apenas PDF e DOCX são aceitos.`,
-			});
 		}
+		throw new ORPCError("BAD_REQUEST", {
+			message: `Tipo de arquivo não suportado: ${mimeType}. Apenas PDF e DOCX são aceitos.`,
+		});
 	} catch (error) {
 		if (error instanceof ORPCError) {
 			throw error;

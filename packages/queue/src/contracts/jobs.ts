@@ -20,7 +20,10 @@ export const CurriculumProcessJobSchema = z.object({
 	userId: z.string().min(1, "userId é obrigatório"),
 	documentText: z.string().min(1, "documentText não pode estar vazio"),
 	jobDescription: z.string().min(1, "jobDescription não pode estar vazio"),
-	source: z.string().optional().describe("Origem do documento (ex: 'upload', 'paste')"),
+	source: z
+		.string()
+		.optional()
+		.describe("Origem do documento (ex: 'upload', 'paste')"),
 	traceContext: TraceContextSchema.optional(),
 });
 

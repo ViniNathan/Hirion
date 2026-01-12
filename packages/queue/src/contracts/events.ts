@@ -11,9 +11,14 @@ export const JobEventType = {
 export type JobEventType = (typeof JobEventType)[keyof typeof JobEventType];
 
 export const JobProgressSchema = z.object({
-	step: z.string().describe("Nome da etapa atual (ex: 'scoring', 'cover_letter')"),
+	step: z
+		.string()
+		.describe("Nome da etapa atual (ex: 'scoring', 'cover_letter')"),
 	pct: z.number().min(0).max(100).describe("Percentual de conclusão (0-100)"),
-	message: z.string().optional().describe("Mensagem opcional sobre o progresso"),
+	message: z
+		.string()
+		.optional()
+		.describe("Mensagem opcional sobre o progresso"),
 });
 
 export type JobProgress = z.infer<typeof JobProgressSchema>;
