@@ -1,0 +1,45 @@
+model Curriculum {
+  id            String     @id @default(cuid())
+  userId        String
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  filename      String
+  fileType      String
+  extractedText String     @db.Text
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  analyses      Analysis[]
+  coverLetters  CoverLetter[]
+  
+  @@index([userId])
+  @@map("curriculum")
+}
+
+model Analysis {
+  id             String       @id @default(cuid())
+  curriculumId   String
+  curriculum     Curriculum   @relation(fields: [curriculumId], references: [id], onDelete: Cascade)
+  jobDescription String       @db.Text
+  score          Int?
+  feedback       Json?        // Detalhes da análise da IA
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  coverLetters   CoverLetter[]
+
+  @@index([curriculumId])
+  @@map("analysis")
+}
+
+model CoverLetter {
+  id           String     @id @default(cuid())
+  analysisId   String?
+  analysis     Analysis?  @relation(fields: [analysisId], references: [id])
+  curriculumId String
+  curriculum   Curriculum @relation(fields: [curriculumId], references: [id], onDelete: Cascade)
+  content      String     @db.Text
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([analysisId])
+  @@index([curriculumId])
+  @@map("cover_letter")
+}
