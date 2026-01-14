@@ -8,3 +8,36 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Job {
+  id          String   @id @default(uuid())
+  type        String
+  status      String   // queued | active | completed | failed | cancelled
+  userId      String
+  createdAt   DateTime @default(now())
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  attemptsMade Int     @default(0)
+  lastError   Json?
+  
+  artifacts   JobArtifact[]
+  
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("job")
+}
+
+model JobArtifact {
+  id            String   @id @default(uuid())
+  jobId         String
+  job           Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  langsmithRunId String?
+  costTokens    Int?
+  costUSD       Float?
+  result        Json?
+  createdAt     DateTime @default(now())
+  
+  @@index([jobId])
+  @@map("job_artifact")
+}
