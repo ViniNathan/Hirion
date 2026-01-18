@@ -72,7 +72,7 @@ export default function Hero() {
 						ease: [0.16, 1, 0.3, 1],
 					}}
 				>
-					Experience hiring before it happens.
+					Experience hiring before it happens
 				</motion.p>
 
 				<motion.div
